@@ -86,17 +86,11 @@ namespace LinqExercise
             Console.WriteLine("-----------------------");
 
             //TODO: Print the Sum and then the Average of the employees' YearsOfExperience if their YOE is less than or equal to 10 AND Age is greater than 35.
-            int sum = 0;
-            int empCount = 0;
-            int avg = 0;
-            var organize = employees.Where(x => x.YearsOfExperience <= 10 && x.Age > 35);
-            foreach (var item in organize)
-            {
-                sum += item.YearsOfExperience;
-                empCount++;
-            }
-            avg = sum / empCount;
-
+            
+            int sum = employees.Where(x => x.YearsOfExperience <= 10 && x.Age > 35).Sum(x => x.YearsOfExperience);
+            //Console.WriteLine(sum);
+            var avg = employees.Where(x => x.YearsOfExperience <= 10 && x.Age > 35).Average(x => x.YearsOfExperience);
+            //Console.WriteLine(avg);
             Console.WriteLine($"The sum of YOE employess with 10 or less YOE and who are older than 35 is {sum} , and the average is {avg}");
             Console.WriteLine("-----------------------");
 
